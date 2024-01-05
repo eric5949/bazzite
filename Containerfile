@@ -78,6 +78,11 @@ RUN rpm-ostree override replace \
     rpm-ostree override replace \
     --experimental \
     --from repo=updates \
+        libaom \
+        || true && \
+    rpm-ostree override replace \
+    --experimental \
+    --from repo=updates \
         gstreamer1 \
         gstreamer1-plugins-base \
         gstreamer1-plugins-bad-free-libs \
@@ -161,6 +166,8 @@ RUN rpm-ostree install \
         fira-code-fonts \
         glow \
         gum \
+        setroubleshoot \
+        setools \
         redhat-lsb-core && \
     ln -s /usr/share/fonts/google-noto-sans-cjk-fonts /usr/share/fonts/noto-cjk && \
     wget https://raw.githubusercontent.com/scaronni/steam-proton-mf-wmv/master/installcab.py -O /usr/bin/installcab && \
