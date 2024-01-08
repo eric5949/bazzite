@@ -8,7 +8,7 @@
 %global with_omx 1
 %global with_opencl 1
 %endif
-%global base_vulkan ,amd
+%global base_vulkan ,amd,nouveau-experimental
 %endif
 
 %ifarch %{ix86} x86_64
@@ -63,7 +63,7 @@ Name:           mesa
 Summary:        Mesa graphics libraries
 %global ver 23.3.1
 Version:        %{lua:ver = string.gsub(rpm.expand("%{ver}"), "-", "~"); print(ver)}
-Release:        101.bazzite.{{{ git_dir_version }}}
+Release:        102.bazzite.{{{ git_dir_version }}}
 License:        MIT AND BSD-3-Clause AND SGI-B-2.0
 URL:            http://www.mesa3d.org
 
@@ -668,6 +668,8 @@ rm -Rf %{buildroot}%{_datadir}/drirc.d/00-mesa-defaults.conf
 %{_datadir}/drirc.d/00-radv-defaults.conf
 %endif
 %{_datadir}/vulkan/icd.d/radeon_icd.*.json
+%{_libdir}/libvulkan_nouveau.so
+%{_datadir}/vulkan/icd.d/nouveau_icd.*.json
 %ifarch %{ix86} x86_64
 %{_libdir}/libvulkan_intel.so
 %{_datadir}/vulkan/icd.d/intel_icd.*.json
